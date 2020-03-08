@@ -24,6 +24,7 @@ public class truthSpotter {
             String name = scr.next();
             players.add(new playerCharacters(name, play_key_pairs[i][0], play_key_pairs[i][1]));
         }
+        //TODO!!
         // the following searches through the catagory files 
         //and is intended to add a string array to the QA_pairs list with index 0 the question and index 1 the answer
         for(Scanner f : catfiles) {
