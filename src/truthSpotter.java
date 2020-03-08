@@ -2,18 +2,14 @@ import java.util.*;
 
 public class truthSpotter {
     
-    public  int numPlayers;
+    private ArrayList<playerCharacters> players = new ArrayList<playerCharacters>();
+    
     private char[][] play_key_pairs = {{'q','s'},{'x','c'},{'n','m'},{'l','p'}};//key pairs for yes and no the left key for yes and the right key for no
     
-    public void truthSpotter(int numP) {
-        numPlayers = numP;
+    public void truthSpotter(int numPlayers) {
+        //initializes everything in the game
     }
     
-    public static void initializePlayers(int x) {
-        
-        
-        
-    }
     
     //public int scoreKeeping() {
         
