@@ -12,10 +12,9 @@ public class truthSpotter {
         Scanner scr = new Scanner(System.in);
         for(int i=0;i<numPlayers;i++) {
             System.out.println("Please enter player "+i+"'s name");
-            String name = scr.nextLine();
+            String name = scr.next();
             players.add(new playerCharacters(name, play_key_pairs[i][0], play_key_pairs[i][1]));
         }
-        scr.close();
     }
     
     
@@ -79,7 +78,6 @@ public static void main(String[] args){
             numP = scr.nextInt();
         }
         else {
-            scr.close();
             truthSpotter game = new truthSpotter(numP);//if the number of players is correct a new instance of the truthSpotter Class is made called game
             break;
         }
