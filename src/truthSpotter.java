@@ -6,8 +6,15 @@ public class truthSpotter {
     
     private char[][] play_key_pairs = {{'q','s'},{'x','c'},{'n','m'},{'l','p'}};//key pairs for yes and no the left key for yes and the right key for no
     
-    public void truthSpotter(int numPlayers) {
+    public truthSpotter(int numPlayers) {
         //initializes everything in the game
+        Scanner scr = new Scanner(System.in);
+        for(int i=0;i<numPlayers;i++) {
+            System.out.println("Please enter player "+i+"'s name");
+            String name = scr.nextLine();
+            players.add(new playerCharacters(name, play_key_pairs[i][0], play_key_pairs[i][1]));
+        }
+        scr.close();
     }
     
     
@@ -30,7 +37,8 @@ public static void main(String[] args){
                numP = scr.nextInt();
             }
             else {
-                
+                scr.close();
+                truthSpotter game = new truthSpotter(numP);
                 break;
             }
         }

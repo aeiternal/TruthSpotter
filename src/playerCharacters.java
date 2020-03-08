@@ -11,10 +11,10 @@ public class playerCharacters extends truthSpotter {
     
     
     
-    public playerCharacters(String nm, char yes, char no) {
+    public playerCharacters(String nm, char yk, char nk) {
         name = nm;
-        yesKey = yes;
-        noKey = no;
+        yesKey = yk;
+        noKey = nk;
     }
     
     public void setScore(int scr){
