@@ -7,7 +7,9 @@ public class truthSpotter {
     
     private char[][] play_key_pairs = {{'q','s'},{'x','c'},{'n','m'},{'l','p'}};//key pairs for yes and no the left key for yes and the right key for no
     
-    public truthSpotter(int numPlayers) {
+    private ArrayList<String[]> QA_pairs = new ArrayList<String[]>();
+    
+    public truthSpotter(int numPlayers, ArrayList<Scanner> catfiles) {
         //initializes everything in the game
         Scanner scr = new Scanner(System.in);
         for(int i=0;i<numPlayers;i++) {
@@ -15,22 +17,23 @@ public class truthSpotter {
             String name = scr.next();
             players.add(new playerCharacters(name, play_key_pairs[i][0], play_key_pairs[i][1]));
         }
-    }
-    
-    
-    public String[] questionGen(ArrayList<Scanner> catfiles) {
-        ArrayList<String[]> QA_pairs = new ArrayList<String[]>();
-        Random rand = new Random();
         
         for(Scanner f : catfiles) {
             while(f.hasNextLine()) {
                 String line = f.nextLine();
                 System.out.println(line+f.nextLine());
-                if(line.length() > 6) {
-                    QA_pairs.add(new String[] {line,f.nextLine()});
+                if(f.hasNextLine()) {
+                    if(line.length() > 6) {
+                        QA_pairs.add(new String[] {line,f.nextLine()});
+                    }
                 }
             }
         }
+    }
+    
+    
+    public String[] questionGen(ArrayList<Scanner> catfiles) {
+        Random rand = new Random();
         
         return(QA_pairs.get(rand.nextInt(QA_pairs.size())));
     }
@@ -78,7 +81,7 @@ public static void main(String[] args){
             numP = scr.nextInt();
         }
         else {
-            truthSpotter game = new truthSpotter(numP);//if the number of players is correct a new instance of the truthSpotter Class is made called game
+            truthSpotter game = new truthSpotter(numP,rawCatagories);//if the number of players is correct a new instance of the truthSpotter Class is made called game
             break;
         }
     }
