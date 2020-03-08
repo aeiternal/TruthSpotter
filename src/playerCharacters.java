@@ -15,8 +15,8 @@ public class playerCharacters{
         noKey = nk;
     }
     
-    public void setScore(int scr){
-        score = scr;
+    public void scoreUp(int scr){
+        score += scr;
     }
     
     public String getName() {
