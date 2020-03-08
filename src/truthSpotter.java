@@ -2,7 +2,7 @@ import java.util.*;
 
 public class truthSpotter {
     
-    private ArrayList<playerCharacters> players = new ArrayList<playerCharacters>();
+    public ArrayList<playerCharacters> players = new ArrayList<playerCharacters>();
     
     private char[][] play_key_pairs = {{'q','s'},{'x','c'},{'n','m'},{'l','p'}};//key pairs for yes and no the left key for yes and the right key for no
     
@@ -44,7 +44,6 @@ public static void main(String[] args){
         }
         
     }
-    
 }
 
 

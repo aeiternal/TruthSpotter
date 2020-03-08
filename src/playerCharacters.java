@@ -1,6 +1,4 @@
-import java.util.*;
-
-public class playerCharacters extends truthSpotter {
+public class playerCharacters{
 
     
     
