@@ -23,28 +23,17 @@ public class truthSpotter {
         ArrayList<String[]> QA_pairs = new ArrayList<String[]>();
         Random rand = new Random();
         
-        while(f.hasNextLine()) {
-            String line = f.nextLine();
-            line = line.replaceAll("\\s{2,}", " ").trim();
-            //System.out.println(line);
-            periodCount = 0;
-            try {
-                double value;
-                String[] tempArray = line.split(" ");
-                for (int i = 0; i < tempArray.length; i++) {
-                    value = Double.parseDouble(tempArray[i]);
-                    //System.out.println(value);
-                    priceTable[companyCount][periodCount] = value;
-                    periodCount += 1;
+        for(Scanner f : catfiles) {
+            while(f.hasNextLine()) {
+                String line = f.nextLine();
+                System.out.println(line+f.nextLine());
+                if(line.length() > 6) {
+                    QA_pairs.add(new String[] {line,f.nextLine()});
                 }
             }
-            catch (NumberFormatException nfe) {
-                companyNames[companyCount] = line;
-                companyCount += 1;
-            }
-        }  
+        }
         
-        return(values);
+        return(QA_pairs.get(rand.nextInt(QA_pairs.size())));
     }
     
     
@@ -64,7 +53,7 @@ public static void main(String[] args){
          else{
             try{
                fn = args[i];
-               catagories.add(new Scanner(new File(fn)));
+               rawCatagories.add(new Scanner(new File(fn)));
             }
             catch(Exception e){
                System.out.println("Could not open the file " + fn + '.');
