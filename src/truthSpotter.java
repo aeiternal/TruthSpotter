@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.*;
 
 public class truthSpotter {
@@ -24,26 +25,57 @@ public class truthSpotter {
     
     
 public static void main(String[] args){
-        Scanner scr = new Scanner(System.in);
-        
-        System.out.println("Welcome to TruthSpotter! The game where you have to find the truth in a sea of lies! Tell me, How many are playing today?");
-       
-        int numP = scr.nextInt();
-        
-        //while loop to check for the correct number of players
-        while(true) {
-            if (numP < 2) {
-               System.out.println("at least 2 players are required for play");
-               numP = scr.nextInt();
+    
+    String fn = null;
+    
+    ArrayList<Scanner> catagories = new ArrayList<Scanner>();
+    
+    //loops through the command line args where each input is a question catagory
+    for(int i=0;i<args.length;i++) {
+        if (args.length == 0){
+            System.out.println("The name of the input data file"
+            + " should be on the command line.\nTerminating.");
+            return;
+         }
+         else{
+            try{
+               fn = args[i];
+               catagories.add(new Scanner(new File(fn)));
             }
-            else {
-                scr.close();
-                truthSpotter game = new truthSpotter(numP);
-                break;
+            catch(Exception e){
+               System.out.println("Could not open the file " + fn + '.');
+               return;
             }
-        }
-        
+         }
     }
+
+    Scanner scr = new Scanner(System.in);
+    
+    System.out.println("Welcome to TruthSpotter! The game where you have to find the truth in a sea of lies! Tell me, How many are playing today?");
+    int numP = scr.nextInt();
+    
+    
+    //while loop to check for the correct number of players
+    while(true) {
+        if (numP < 2) {
+           System.out.println("at least 2 players are required for play");
+           numP = scr.nextInt();
+        }
+        else if(numP > 4) {
+            System.out.println("no more than 4 players are allowed to play");
+            numP = scr.nextInt();
+        }
+        else {
+            scr.close();
+            truthSpotter game = new truthSpotter(numP);//if the number of players is correct a new instance of the truthSpotter Class is made called game
+            break;
+        }
+    }
+    
+    //while 
+    
+        
+  }
 }
 
 
