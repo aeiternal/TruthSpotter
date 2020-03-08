@@ -19,16 +19,40 @@ public class truthSpotter {
     }
     
     
-    //public int scoreKeeping() {
+    public String[] questionGen(ArrayList<Scanner> catfiles) {
+        ArrayList<String[]> QA_pairs = new ArrayList<String[]>();
+        Random rand = new Random();
         
-    //}
+        while(f.hasNextLine()) {
+            String line = f.nextLine();
+            line = line.replaceAll("\\s{2,}", " ").trim();
+            //System.out.println(line);
+            periodCount = 0;
+            try {
+                double value;
+                String[] tempArray = line.split(" ");
+                for (int i = 0; i < tempArray.length; i++) {
+                    value = Double.parseDouble(tempArray[i]);
+                    //System.out.println(value);
+                    priceTable[companyCount][periodCount] = value;
+                    periodCount += 1;
+                }
+            }
+            catch (NumberFormatException nfe) {
+                companyNames[companyCount] = line;
+                companyCount += 1;
+            }
+        }  
+        
+        return(values);
+    }
     
     
 public static void main(String[] args){
     
     String fn = null;
     
-    ArrayList<Scanner> catagories = new ArrayList<Scanner>();
+    ArrayList<Scanner> rawCatagories = new ArrayList<Scanner>();
     
     //loops through the command line args where each input is a question catagory
     for(int i=0;i<args.length;i++) {
@@ -72,7 +96,7 @@ public static void main(String[] args){
         }
     }
     
-    //while 
+     
     
         
   }
