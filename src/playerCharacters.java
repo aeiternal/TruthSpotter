@@ -6,16 +6,16 @@ public class playerCharacters extends truthSpotter {
     
     private String name;
     private int score;
-    private char yes;
-    private char no;
+    private char yesKey;
+    private char noKey;
     
     
     
-    public playerCharacters(String nm, int scr, char True, char False) {
+    public playerCharacters(String nm, int scr, char yes, char no) {
         name = nm;
-        scr = score;
-        True = yes;
-        False = no;
+        score = scr;
+        yesKey = yes;
+        noKey = no;
     }
     
     
@@ -31,12 +31,12 @@ public class playerCharacters extends truthSpotter {
     
     
     public char getTrue() {
-        return yes;
+        return yesKey;
     }
     
     
     public char getFalse() {
-        return no;
+        return noKey;
     }
 
     
