@@ -6,19 +6,19 @@ public class truthSpotter {
 
 	static int answerPoints = 100;
 	static int bonusPoints = 75;
-
-	public ArrayList<playerCharacters> players = new ArrayList<playerCharacters>();// list of players in the game
+	
+	
+	//Creates an arrayList to store our string values for questions and answers
+	private ArrayList<String[]> QA_pairs = new ArrayList<String[]>();
+	
+	//Creates an arrayList to store our characters 
+	public ArrayList<playerCharacters> players = new ArrayList<playerCharacters>();
 
 	private char[][] play_key_pairs = { { 'q', 's' }, { 'x', 'c' }, { 'n', 'm' }, { 'l', 'p' } };// key pairs for yes
 																									// and no the left
 																									// key for yes and
 																									// the right key for
 																									// no
-
-	public ArrayList<String> askedQuestions = new ArrayList<String>();
-
-	private ArrayList<String[]> QA_pairs = new ArrayList<String[]>();// pairs of questions and answer arrays pulled from
-																		// the given resource files
 
 	public truthSpotter(int numPlayers, ArrayList<Scanner> catfiles) {
 		// initializes everything in the game
@@ -43,7 +43,7 @@ public class truthSpotter {
 				prevLine = currLine;
 				currLine = f.nextLine();
 				
-				if (currLine.length() < 7){
+				if (currLine.contains("true")|| currLine.contains("false")){
 					QA_pairs.add(new String[] { prevLine, currLine });
 				}
 				
