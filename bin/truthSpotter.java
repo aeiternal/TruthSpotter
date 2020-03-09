@@ -29,9 +29,9 @@ public class truthSpotter {
 			String name = scr.next();
 			players.add(new playerCharacters(name, play_key_pairs[i][0], play_key_pairs[i][1], 0));
 		}
-		// the following searches through the category files
-		// and is intended to add a string array to the QA_pairs list with index 0 the
-		// question and index 1 the answer
+
+		// Parses through the category files and assigns questions to index 0 and
+		// answers to index 1
 		String prevLine;
 		String currLine = null;
 
@@ -67,6 +67,8 @@ public class truthSpotter {
 		// Returns the input from players answering true or false
 		String answers = scr.next();
 
+		//TODO
+		//Alter the points system so that only the person who answers right first gets the bonus points
 		int points = answerPoints;
 		System.out.println("The answer is: " + QA[1]);
 		for (int i = 0; i < answers.length(); i++) {
@@ -75,12 +77,12 @@ public class truthSpotter {
 			}
 			for (playerCharacters player : players) {
 				if (player.getTrue() == answers.charAt(i)) {
-					if (QA[1] == "true") {
+					if (QA[1].length() == 4) {
 						player.setScore(player.getScore() + points);
 					}
 				}
 				if (player.getFalse() == answers.charAt(i)) {
-					if (QA[1] == "false") {
+					if (QA[1].length() == 5) {
 						player.setScore(player.getScore() + points);
 					}
 				}
@@ -94,11 +96,25 @@ public class truthSpotter {
 			System.out.println(player.getName() + ": " + player.getScore());
 		}
 
-		// Removes the question so it cant be asked again
+		// Removes the question so it can't be asked again
 		QA_pairs.remove(questionNum);
+		
+		
+			
+		}
 
-		// Makes the transition prettier (in my opinion)
-		System.out.println("\n\nThe next question is: ");
+	
+	public String playAgain() {
+		Scanner scr = new Scanner(System.in);
+		System.out.println("Do you want to play another round?");
+		if (scr.next() == "yes") {
+			return "yes";
+		}
+		
+		else {
+			return "no";
+			
+		}
 	}
 
 	public static void main(String[] args) {
@@ -123,7 +139,6 @@ public class truthSpotter {
 				}
 			}
 		}
-
 		Scanner scr = new Scanner(System.in);
 
 		System.out.println(
@@ -147,12 +162,23 @@ public class truthSpotter {
 		// truthSpotter called game
 		truthSpotter game = new truthSpotter(numP, rawCategories);
 
-		//Just a print out to increase visual clarity
+		// Just a print out to increase visual clarity
 		System.out.println("\n\n\nThe first question is:");
+
+		int count = 0;
+		int rounds = 1;
+		String playAgain;
 		
-		//Calls for questions to be asked
-		while (true) {
-			game.ask_question();
+		while (rounds <4) {
+			while (count < 10) {
+				game.ask_question();
+				count++;
+				// Makes the transition prettier (in my opinion)
+				System.out.println("\n\nThe next question is: ");
+			}
+			//TODO
+			//Ask for a user input to see if they want to play again
+			//should force the user to enter a correct input if they enter something incorrect
 		}
 
 	}

@@ -12,7 +12,7 @@ public class playerCharacters {
 		score = scr;
 	}
 
-
+	
 	public String getName() {
 		return name;
 	}
